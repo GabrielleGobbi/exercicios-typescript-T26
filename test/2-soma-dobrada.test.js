@@ -13,3 +13,4 @@ describe('Soma dobrada', () => {
         expect(somaDobrada(3, 2)).toBe(5);
     });
 })
+

@@ -1,8 +1,8 @@
-function contadorDeOcorrencia(texto: string, letra: string) {
+export function contadorDeOcorrencia(texto: string, busca: string) :number {
     let contador = 0;
 
     for (let i = 0; i < texto.length; i++) {
-        if (texto[i] === letra) {
+        if (texto[i] === busca) {
             contador++;
         }
     }
@@ -10,4 +10,5 @@ function contadorDeOcorrencia(texto: string, letra: string) {
     return contador;  
 
 }
-module.exports = contadorDeOcorrencia;
+
+//module.exports = contadorDeOcorrencia; 

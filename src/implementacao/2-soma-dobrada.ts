@@ -1,10 +1,14 @@
-function somaDobrada(umValor: number, outroValor: number) {
-   if (umValor==outroValor) {
-        return ((umValor+outroValor)+(umValor+outroValor));
-   } else if(umValor<1 || outroValor<1){
-        return -1;
-    
-   }
-    return (umValor+outroValor);
-}
-module.exports = somaDobrada;
+export function somaDobrada(umValor: number, outroValor: number): number {
+     if (umValor < 1 || outroValor < 1) {
+         return -1;
+     }
+ 
+     const soma = umValor + outroValor;
+ 
+     if (umValor === outroValor) {
+         return soma * 2;
+     }
+ 
+     return soma;
+ }
+ 
