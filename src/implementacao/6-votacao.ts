@@ -28,3 +28,8 @@ function apuraVotacao(votos: Array<number>) {
 }
 
 module.exports = apuraVotacao;
+/**
+ * 1. Alterar o tipo do parâmetro → Substituir Array<number> por number[], que é uma forma mais comum e concisa de tipar arrays no TypeScript.
+2. Manter a exportação com module.exports.
+
+ */

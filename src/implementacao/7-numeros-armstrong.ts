@@ -1,19 +1,46 @@
 function numerosArmstrong(numero: number) {
-    let result: number = 0; // Inicializa a soma dos dígitos elevados à potência
-    const numeroStr = numero.toString(); // Converte o número para string para facilitar a manipulação dos dígitos
-    const numDigitos = numeroStr.length; // Conta a quantidade de dígitos no número
+    // Contar dígitos manualmente
+    let contadorDigitos = 0;
+    let copiaContagem = numero;
 
-    // Percorre os dígitos usando um for tradicional
-    for (let i = 0; i < numDigitos; i++) {
-        const digito = Number(numeroStr[i]); // Obtém o dígito como número
-        result += Math.pow(digito, numDigitos); // Eleva o dígito à quantidade de dígitos e soma
+    if (copiaContagem === 0) {
+        contadorDigitos = 1;
+    } else {
+        while (copiaContagem > 0) {
+            copiaContagem = (copiaContagem - (copiaContagem % 10)) / 10;
+            contadorDigitos++;
+        }
     }
 
-    // Verifica se a soma é igual ao número original e retorna a mensagem correspondente
-    return result === numero 
-        ? "Este eh um numero de Armstrong!" 
+    // Potência manual
+    let soma = 0;
+    let copiaSoma = numero;
+
+    while (copiaSoma > 0) {
+        let digito = copiaSoma % 10;
+
+        // Calcular potência manualmente
+        let potencia = 1;
+        for (let i = 0; i < contadorDigitos; i++) {
+            potencia *= digito;
+        }
+
+        soma += potencia;
+
+        // Avança para o próximo dígito (manual floor)
+        copiaSoma = (copiaSoma - (copiaSoma % 10)) / 10;
+    }
+
+    return soma === numero
+        ? "Este eh um numero de Armstrong!"
         : "Este nao eh um numero de Armstrong!";
 }
 
+
+
 // Exportação do módulo para uso externo
 module.exports = numerosArmstrong;
+/**1. Contar a quantidade de dígitos do número sem toString() e length. Utilizar divisões sucessivas por 10 até o número se tornar zero.
+2. Substituir Math.pow(). Criar uma função manual para calcular a potência de um número usando um loop.
+3. Extrair os dígitos sem converter para string (Number()). Utilizar divisões e restos (/ e %) para obter cada dígito do número.
+ */
