@@ -1,21 +1,27 @@
-function apuraVotacao(votos: Array<number>) {
-    // Criamos um objeto para contar os votos
+function apuraVotacao(votos: number[]): string {
+    // Inicia a contagem de votos para os 3 candidatos
     let contagem = { 1: 0, 2: 0, 3: 0 };
 
-    // Percorremos o array de votos usando um for tradicional
-    for (let i = 0; i < votos.length; i++) {
-        let voto = votos[i]; // Pegamos o elemento na posição i
+    let i = 0;
+
+    // Loop manual para percorrer o array de votos até encontrar undefined
+    while (votos[i] !== undefined) {
+        let voto = votos[i];
+
+        // Se o voto for para um candidato válido, incrementa
         if (contagem[voto] !== undefined) {
             contagem[voto]++;
         }
+
+        i++; // Avança para o próximo voto
     }
 
-    // Pegamos os votos de cada candidato
-    const votos1 = contagem[1];
-    const votos2 = contagem[2];
-    const votos3 = contagem[3];
+    // Recupera a quantidade de votos de cada candidato
+    let votos1 = contagem[1];
+    let votos2 = contagem[2];
+    let votos3 = contagem[3];
 
-    // Verificamos qual candidato tem mais votos
+    // Verifica quem teve mais votos
     if (votos1 > votos2 && votos1 > votos3) {
         return "Vencedor: 1";
     } else if (votos2 > votos1 && votos2 > votos3) {
@@ -28,6 +34,9 @@ function apuraVotacao(votos: Array<number>) {
 }
 
 module.exports = apuraVotacao;
+
+console.log(apuraVotacao([1, 2, 2, 3, 2, 1])); // Vencedor: 2
+
 /**
  * 1. Alterar o tipo do parâmetro → Substituir Array<number> por number[], que é uma forma mais comum e concisa de tipar arrays no TypeScript.
 2. Manter a exportação com module.exports.
